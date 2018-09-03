@@ -29,7 +29,7 @@ DEPENDENCIES
   bundler (~> 1.16)
   flagdoc!
   rake (~> 10.0)
-  rspec (~> 3.0)
+  rspec
 
 BUNDLED WITH
    1.16.1
