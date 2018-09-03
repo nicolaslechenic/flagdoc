@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'flagdoc'
+
+Flagdoc::Hello.new.say
