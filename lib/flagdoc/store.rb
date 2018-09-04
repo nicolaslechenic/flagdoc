@@ -9,14 +9,28 @@ module Flagdoc
       @flags = []
     end
 
+    # @since 0.1.0
     def add(args)
+      return unless valide?(args)
+
       @flags << {
         type: args[:type],
         priority: args[:priority],
         file: args[:file],
         line: args[:line],
-        desc: args[:desc]
+        description: args[:description]
       }
+    end
+
+    private
+
+    # @since 0.1.0
+    #
+    # @return [Boolean] true if all args are ok
+    def valide?(args)
+      args[:priority] ||= 'NORMAL'
+
+      Priority.available?(args[:priority])
     end
   end
 end

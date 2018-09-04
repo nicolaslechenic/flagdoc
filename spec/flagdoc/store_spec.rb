@@ -20,9 +20,7 @@ RSpec.describe Flagdoc::Store do
         }
       ]
 
-    flags.each do |flag|
-      instance.add(flag)
-    end
+    flags.each { |flag| instance.add(flag) }
 
     expect(instance.flags.count).to eq(2)
   end
