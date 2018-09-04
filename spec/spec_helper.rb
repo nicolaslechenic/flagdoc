@@ -1,5 +1,9 @@
 require 'bundler/setup'
 require 'flagdoc'
+require 'pry'
+require 'yaml'
+
+Dir['spec/support/*.rb'].each   { |path| require "./#{path}" }
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

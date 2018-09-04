@@ -1,0 +1,15 @@
+- type: 'TODO'
+  priority: 'HIGH'
+  path: './app/models/file.rb'
+  line: 32
+  description: 'change method name'
+- type: 'INFO'
+  priority: 'LOW'
+  path: './app/models/file.rb'
+  line: 44
+  description: 'implemented twice'
+- type: 'INFO'
+  priority: 'NORMAL'
+  path: './app/models/other.rb'
+  line: 22
+  description: 'other comment'

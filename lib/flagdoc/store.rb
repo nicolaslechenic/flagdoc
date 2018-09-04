@@ -3,23 +3,27 @@ module Flagdoc
   #
   # @since 0.1.0
   class Store
-    attr_reader :flags
+    attr_reader :files
 
     def initialize
-      @flags = []
+      @files = []
     end
 
+    # Add flag to file path if already exist
+    # then add file path and flag to @files
+    #
     # @since 0.1.0
     def add(args)
       return unless valide?(args)
 
-      @flags << {
-        type: args[:type],
-        priority: args[:priority],
-        file: args[:file],
-        line: args[:line],
-        description: args[:description]
-      }
+      flag = serialize_flag(args)
+      file = find_by_path(args['path'])
+
+      if file
+        file[:flags] << flag
+      else
+        add_file(args, flag)
+      end
     end
 
     private
@@ -28,9 +32,31 @@ module Flagdoc
     #
     # @return [Boolean] true if all args are ok
     def valide?(args)
-      args[:priority] ||= 'NORMAL'
+      args['priority'] ||= 'NORMAL'
 
-      Priority.available?(args[:priority])
+      Priority.available?(args['priority'])
+    end
+
+    # @since 0.1.0
+    #
+    # @return [Hash] file with path
+    def find_by_path(path)
+      @files.find { |file| file[:path] == path }
+    end
+
+    # @since 0.1.0
+    def add_file(args, flag)
+      @files << { path: args['path'], flags: [flag] }
+    end
+
+    # @since 0.1.0
+    def serialize_flag(args)
+      {
+        type: args['type'],
+        priority: args['priority'],
+        line: args['line'],
+        description: args['description']
+      }
     end
   end
 end

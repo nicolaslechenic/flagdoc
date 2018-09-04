@@ -1,27 +1,27 @@
+require 'flagdoc/stream'
+
 RSpec.describe Flagdoc::Store do
   let(:instance) { described_class.new }
 
-  it 'return two flags after added' do
-    flags =
-      [
+  describe '.add' do
+    it 'return two files after added' do
+      Fixtures.flags.each { |flag| instance.add(flag) }
+
+      expect(instance.files.count).to eq(2)
+    end
+
+    it 'add nothing with unavailable priority' do
+      instance.add(
         {
-          type: 'TODO',
-          priority: 'HIGH',
-          file: './app/models/file.rb',
-          line: 32,
-          description: 'change method name'
-        },
-        {
-          type: 'INFO',
-          priority: 'LOW',
-          file: './app/models/file.rb',
-          line: 44,
-          description: 'implemented twice'
+          'type'        => 'TODO',
+          'priority'    => 'OOPS',
+          'path'        => './app/models/file.rb',
+          'line'        => 32,
+          'description' => 'change method name'
         }
-      ]
+      )
 
-    flags.each { |flag| instance.add(flag) }
-
-    expect(instance.flags.count).to eq(2)
+      expect(instance.files.count).to eq(0)
+    end
   end
 end

@@ -1,3 +1,1 @@
-require 'flagdoc/priority'
-require 'flagdoc/store'
-require 'flagdoc/version'
+%w[priority store stream version].each { |file| require "flagdoc/#{file}" }
