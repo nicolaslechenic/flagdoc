@@ -1,2 +1,3 @@
-require 'flagdoc/version'
+require 'flagdoc/priority'
 require 'flagdoc/store'
+require 'flagdoc/version'
