@@ -41,6 +41,10 @@ module Flagdoc
       end
     end
 
+    def type_color(priority)
+      "1;97;#{Priority.color_code(priority)}"
+    end
+
     # @since 0.1.0
     #
     # @return [STDOUT] colored file path
@@ -56,17 +60,18 @@ module Flagdoc
     def flags(flags)
       flags.each do |flag|
         type     = flag[:type]
-        line     = "line #{flag[:line]}"
         desc     = flag[:description]
+        line     = "line #{flag[:line]}"
 
-        blanks_line = ' ' * (LINE_SIZE - line.length)
-        blanks_type = ' ' * ((BOX_SIZE - LINE_SIZE - 2) - type.length)
-        blanks_desc = ' ' * (BOX_SIZE - desc.length)
+        space_line  = space_line(LINE_SIZE - line.length)
+        space_type  = space_line((BOX_SIZE - LINE_SIZE - 2) - type.length)
+        space_desc  = space_line(BOX_SIZE - desc.length)
+        full_spaces = space_line(BOX_SIZE)
 
-        type_content = "\e[1;97;#{Priority.color_code(flag[:priority])}m #{type}#{blanks_type} \e[0m"
-        line_content = "\e[#{line_color}m #{blanks_line}#{line} \e[0m"
-        desc_content = "\e[#{description_color}m #{desc.capitalize}#{blanks_desc} \e[0m"
-        blank_line   = "\e[#{description_color}m #{' ' * BOX_SIZE} \e[0m"
+        blank_line   = colorize(description_color, full_spaces)
+        line_content = colorize(line_color, space_line + line)
+        type_content = colorize(type_color(flag[:priority]), type + space_type)
+        desc_content = colorize(description_color, desc.capitalize + space_desc)
 
         puts "  #{type_content}#{line_content}"
         puts "  #{blank_line}"
@@ -74,6 +79,18 @@ module Flagdoc
         puts "  #{blank_line}"
         puts
       end
+    end
+
+    def space_line(number)
+      ' ' * number
+    end
+
+    def colorize(color, content)
+      format(
+        "\e[%<color>sm %<content>s \e[0m",
+        color: color,
+        content: content
+      )
     end
   end
 end
