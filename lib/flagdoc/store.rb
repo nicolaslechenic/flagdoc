@@ -5,6 +5,7 @@ module Flagdoc
   class Store
     attr_reader :files
 
+    # Store files data with flags infos
     def initialize
       @files = []
     end

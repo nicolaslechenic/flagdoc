@@ -13,11 +13,16 @@ module Flagdoc
     BOX_SIZE = 54
     LINE_SIZE = 12
 
+    # @since 1.0.1
     def initialize(store:)
       @store = store
     end
 
+    # Launch the stream of stored informations
+    #
     # @since 1.0.1
+    #
+    # @return [STDOUT] with formatted informations
     def call
       @store.files.each do |file|
         file_path(file[:path])
