@@ -18,8 +18,6 @@ module Flagdoc
         LEVELS.key?(priority)
       end
 
-      # @flag [TODO, NORMAL] other flag a little bit less important
-      #
       # @since 0.1.0
       #
       # @return [String] with bash color code
