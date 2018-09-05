@@ -5,9 +5,9 @@ module Flagdoc
   class Priority
     LEVELS =
       {
-        'LOW' => 42,
-        'NORMAL' => 43,
-        'HIGH' => 101
+        'LOW' => '48;5;29',
+        'NORMAL' => '48;5;166',
+        'HIGH' => '48;5;196'
       }.freeze
 
     class << self
@@ -18,6 +18,8 @@ module Flagdoc
         LEVELS.key?(priority)
       end
 
+      # @flag [TODO, NORMAL] other flag a little bit less important
+      #
       # @since 0.1.0
       def color_code(priority)
         LEVELS[priority]

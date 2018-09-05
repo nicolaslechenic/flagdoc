@@ -32,8 +32,6 @@ module Flagdoc
     #
     # @return [Boolean] true if all args are ok
     def valide?(args)
-      args['priority'] ||= 'NORMAL'
-
       Priority.available?(args['priority'])
     end
 
