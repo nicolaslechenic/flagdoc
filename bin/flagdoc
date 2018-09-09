@@ -14,11 +14,11 @@ Dir['./**/*.rb'].each do |file|
     parse = Flagdoc::Parser.new(string: string)
 
     store.add(
-      'path'        => parse.path,
-      'line'        => parse.line,
-      'type'        => parse.type,
-      'priority'    => parse.priority,
-      'description' => parse.description
+      path: parse.path,
+      line: parse.line,
+      type: parse.type,
+      priority: parse.priority,
+      description: parse.description
     )
   end
 end

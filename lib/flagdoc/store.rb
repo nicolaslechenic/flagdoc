@@ -18,7 +18,7 @@ module Flagdoc
       return unless valid?(args)
 
       flag = serialize_flag(args)
-      file = find_by_path(args['path'])
+      file = find_by_path(args[:path])
 
       if file
         file[:flags] << flag
@@ -31,7 +31,7 @@ module Flagdoc
 
     # @return [Boolean] true if all args are ok
     def valid?(args)
-      Priority.available?(args['priority'])
+      Priority.available?(args[:priority])
     end
 
     # @return [Hash] file with path
@@ -40,15 +40,15 @@ module Flagdoc
     end
 
     def add_file(args, flag)
-      @files << { path: args['path'], flags: [flag] }
+      @files << { path: args[:path], flags: [flag] }
     end
 
     def serialize_flag(args)
       {
-        type: args['type'],
-        priority: args['priority'],
-        line: args['line'],
-        description: args['description']
+        type: args[:type],
+        priority: args[:priority],
+        line: args[:line],
+        description: args[:description]
       }
     end
   end

@@ -13,11 +13,11 @@ RSpec.describe Flagdoc::Store do
     it 'add nothing with unavailable priority' do
       instance.add(
         {
-          'type'        => 'TODO',
-          'priority'    => 'OOPS',
-          'path'        => './app/models/file.rb',
-          'line'        => 32,
-          'description' => 'change method name'
+          type:         'TODO',
+          priority:     'OOPS',
+          path:         './app/models/file.rb',
+          line:         32,
+          description: 'change method name'
         }
       )
 

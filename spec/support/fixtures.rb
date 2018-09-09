@@ -1,7 +1,13 @@
 module Fixtures
   class << self
     def flags
-      @flags ||= load_fixture('flags')
+      @flags ||=
+        load_fixture('flags').map do |hash|
+          hash.inject({}) do |new_hash, (key, value)|
+            new_hash[key.to_sym] = value
+            new_hash
+          end
+        end
     end
 
     def strings
