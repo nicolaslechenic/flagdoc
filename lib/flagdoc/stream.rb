@@ -56,7 +56,7 @@ module Flagdoc
     # @return [STDOUT] colored flags
     def flags(flags)
       flags.each do |flag|
-        head(flag[:type], flag[:line], flag[:priority])
+        head(flag[:type], "line #{flag[:line]}", flag[:priority])
         blank
         content(flag[:description])
         blank
@@ -65,7 +65,6 @@ module Flagdoc
     end
 
     def head(type, line, priority)
-      line          = "line #{line}"
       space_line    = space_line(LINE_SIZE - line.length)
       space_type    = space_line((BOX_SIZE - LINE_SIZE - 2) - type.length)
       line_content  = colorize(line_color, space_line + line)

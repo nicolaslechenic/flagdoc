@@ -3,9 +3,8 @@ module Fixtures
     def flags
       @flags ||=
         load_fixture('flags').map do |hash|
-          hash.inject({}) do |new_hash, (key, value)|
+          hash.each_with_object({}) do |(key, value), new_hash|
             new_hash[key.to_sym] = value
-            new_hash
           end
         end
     end
