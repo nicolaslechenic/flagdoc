@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require 'flagdoc'
 require 'pry'
+require_relative '../lib/flagdoc'
 
 store = Flagdoc::Store.new
 

@@ -1,3 +1,10 @@
+# Flagdoc is a gem used to display custom flags with
+# priority manager in your terminal.
+# After installation you just need to enter flagdoc in
+# your terminal to see the flags.
+# The syntax used is inspired by yardoc like the example below:
+#
+# @flag [MESSAGE, LOW] Hello world !
 module Flagdoc
   # Define priorities levels
   #
@@ -5,9 +12,9 @@ module Flagdoc
   class Priority
     LEVELS =
       {
-        'LOW' => '48;5;29',
-        'NORMAL' => '48;5;166',
-        'HIGH' => '48;5;196'
+        'LOW'     => '48;5;29',
+        'NORMAL'  => '48;5;166',
+        'HIGH'    => '48;5;196'
       }.freeze
 
     class << self
