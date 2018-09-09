@@ -15,7 +15,7 @@ module Flagdoc
     #
     # @since 0.1.0
     def add(args)
-      return unless valide?(args)
+      return unless valid?(args)
 
       flag = serialize_flag(args)
       file = find_by_path(args['path'])
@@ -32,7 +32,7 @@ module Flagdoc
     # @since 0.1.0
     #
     # @return [Boolean] true if all args are ok
-    def valide?(args)
+    def valid?(args)
       Priority.available?(args['priority'])
     end
 
