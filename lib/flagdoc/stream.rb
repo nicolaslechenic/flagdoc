@@ -5,6 +5,7 @@ module Flagdoc
   class Stream
     BOX_SIZE  = 54
     LINE_SIZE = 12
+    TAB_SIZE  = 2
     COLORS    =
       {
         'line'        => '90;48;5;192',
@@ -70,14 +71,14 @@ module Flagdoc
       line_content  = colorize(line_color, space_line + line)
       type_content  = colorize(type_color(priority), type + space_type)
 
-      puts "  #{type_content}#{line_content}"
+      puts "#{tab}#{type_content}#{line_content}"
     end
 
     def blank
       blank =
         colorize(description_color, space_line(BOX_SIZE))
 
-      puts "  #{blank}"
+      puts "#{tab}#{blank}"
     end
 
     def content(description)
@@ -89,11 +90,15 @@ module Flagdoc
           description.capitalize + space_description
         )
 
-      puts "  #{description_content}"
+      puts "#{tab}#{description_content}"
     end
 
     def space_line(number)
       ' ' * number
+    end
+
+    def tab(number = 1)
+      space_line(TAB_SIZE * number)
     end
 
     def colorize(color, content)
