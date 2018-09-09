@@ -31,8 +31,9 @@ module Flagdoc
     # @since 0.1.0
     def priority
       return 'NORMAL' unless type_and_priority.count > 1
+      priority = type_and_priority.last.strip
 
-      type_and_priority.last.strip
+      Priority::LEVELS.key?(priority) ? priority : 'NORMAL'
     end
 
     # @since 0.1.0

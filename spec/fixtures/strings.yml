@@ -1,0 +1,3 @@
+- "./path/to/string.rb:101:# @flag [TYPE, HIGH] Hello world !"
+- "./path/to/string.rb:101:# @flag [TYPE] Hello world !"
+- "./path/to/string.rb:101:# @flag [TYPE, OOPS] Hello world !"
