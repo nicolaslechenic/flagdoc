@@ -13,9 +13,9 @@ module Flagdoc
   class Priority
     LEVELS =
       {
-        'LOW'     => '48;5;29',
-        'NORMAL'  => '48;5;166',
-        'HIGH'    => '48;5;196'
+        'LOW'     => '29',
+        'NORMAL'  => '166',
+        'HIGH'    => '196'
       }.freeze
 
     class << self
@@ -30,7 +30,7 @@ module Flagdoc
       #
       # @return [String] with bash color code
       def color_code(priority)
-        LEVELS[priority]
+        '48;5;' + LEVELS[priority]
       end
     end
   end

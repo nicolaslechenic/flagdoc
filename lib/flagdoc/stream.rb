@@ -5,8 +5,8 @@ module Flagdoc
   class Stream
     COLORS =
       {
-        'line'        => '0;90;48;5;192',
-        'description' => '0;90;48;5;194',
+        'line'        => '90;48;5;192',
+        'description' => '90;48;5;194',
         'file'        => '33;1'
       }.freeze
 
@@ -41,9 +41,7 @@ module Flagdoc
     #
     # @return [String] with bash color code
     COLORS.each do |type, code|
-      define_method("#{type}_color") do
-        code
-      end
+      define_method("#{type}_color") { code }
     end
 
     def type_color(priority)
@@ -64,26 +62,41 @@ module Flagdoc
     # @return [STDOUT] colored flags
     def flags(flags)
       flags.each do |flag|
-        type     = flag[:type]
-        desc     = flag[:description]
-        line     = "line #{flag[:line]}"
-
-        space_line  = space_line(LINE_SIZE - line.length)
-        space_type  = space_line((BOX_SIZE - LINE_SIZE - 2) - type.length)
-        space_desc  = space_line(BOX_SIZE - desc.length)
-        full_spaces = space_line(BOX_SIZE)
-
-        blank_line   = colorize(description_color, full_spaces)
-        line_content = colorize(line_color, space_line + line)
-        type_content = colorize(type_color(flag[:priority]), type + space_type)
-        desc_content = colorize(description_color, desc.capitalize + space_desc)
-
-        puts "  #{type_content}#{line_content}"
-        puts "  #{blank_line}"
-        puts "  #{desc_content}"
-        puts "  #{blank_line}"
+        head(flag[:type], flag[:line], flag[:priority])
+        blank
+        content(flag[:description])
+        blank
         puts
       end
+    end
+
+    def head(type, line, priority)
+      line          = "line #{line}"
+      space_line    = space_line(LINE_SIZE - line.length)
+      space_type    = space_line((BOX_SIZE - LINE_SIZE - 2) - type.length)
+      line_content  = colorize(line_color, space_line + line)
+      type_content  = colorize(type_color(priority), type + space_type)
+
+      puts "  #{type_content}#{line_content}"
+    end
+
+    def blank
+      blank =
+        colorize(description_color, space_line(BOX_SIZE))
+
+      puts "  #{blank}"
+    end
+
+    def content(description)
+      space_description = space_line(BOX_SIZE - description.length)
+
+      description_content =
+        colorize(
+          description_color,
+          description.capitalize + space_description
+        )
+
+      puts "  #{description_content}"
     end
 
     def space_line(number)
