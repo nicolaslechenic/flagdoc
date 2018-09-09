@@ -1,8 +1,9 @@
 # Flagdoc is a gem used to display custom flags with
 # priority manager in your terminal.
 # After installation you just need to enter flagdoc in
-# your terminal to see the flags.
-# The syntax used is inspired by yardoc like the example below:
+# your terminal to display the available flags into the
+# current folder.
+# The syntax used is inspired by yardoc:
 #
 # @flag [MESSAGE, LOW] Hello world !
 module Flagdoc
