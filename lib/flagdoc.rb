@@ -1,3 +1,3 @@
-%w[priority store stream version].each do |file|
+%w[parser priority store stream version].each do |file|
   require_relative "flagdoc/#{file}"
 end

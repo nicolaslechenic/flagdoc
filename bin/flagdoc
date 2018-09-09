@@ -1,27 +1,24 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require 'pry'
 require_relative '../lib/flagdoc'
+require 'pry'
 
 store = Flagdoc::Store.new
 
 Dir['./**/*.rb'].each do |file|
-  results = `grep -rn '# @flag' #{file}`
+  strings = `grep -rn '# @flag' #{file}`
 
-  next if results.empty?
-  results.split("\n").each do |result|
-    splitted_res  = result.split(':')
-    type          = splitted_res[2][/\[(.*)\,/m, 1].strip
-    priority      = splitted_res[2][/\,(.*)\]/m, 1].strip
-    desc          = splitted_res[2].split(']').last.strip
+  next if strings.empty?
+  strings.split("\n").each do |string|
+    parse = Flagdoc::Parser.new(string: string)
 
     store.add(
-      'path'        => splitted_res[0],
-      'line'        => splitted_res[1],
-      'type'        => type,
-      'priority'    => priority,
-      'description' => desc
+      'path'        => parse.path,
+      'line'        => parse.line,
+      'type'        => parse.type,
+      'priority'    => parse.priority,
+      'description' => parse.description
     )
   end
 end

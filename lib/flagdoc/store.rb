@@ -29,26 +29,20 @@ module Flagdoc
 
     private
 
-    # @since 0.1.0
-    #
     # @return [Boolean] true if all args are ok
     def valid?(args)
       Priority.available?(args['priority'])
     end
 
-    # @since 0.1.0
-    #
     # @return [Hash] file with path
     def find_by_path(path)
       @files.find { |file| file[:path] == path }
     end
 
-    # @since 0.1.0
     def add_file(args, flag)
       @files << { path: args['path'], flags: [flag] }
     end
 
-    # @since 0.1.0
     def serialize_flag(args)
       {
         type: args['type'],

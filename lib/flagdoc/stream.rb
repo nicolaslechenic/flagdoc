@@ -3,15 +3,14 @@ module Flagdoc
   #
   # @since 0.1.0
   class Stream
-    COLORS =
+    BOX_SIZE  = 54
+    LINE_SIZE = 12
+    COLORS    =
       {
         'line'        => '90;48;5;192',
         'description' => '90;48;5;194',
         'file'        => '33;1'
       }.freeze
-
-    BOX_SIZE = 54
-    LINE_SIZE = 12
 
     # @since 1.0.1
     def initialize(store:)
@@ -37,8 +36,6 @@ module Flagdoc
     # - line_color
     # - description_color
     #
-    # @since 0.1.0
-    #
     # @return [String] with bash color code
     COLORS.each do |type, code|
       define_method("#{type}_color") { code }
@@ -48,8 +45,6 @@ module Flagdoc
       "1;97;#{Priority.color_code(priority)}"
     end
 
-    # @since 0.1.0
-    #
     # @return [STDOUT] colored file path
     def file_path(path)
       puts
@@ -57,8 +52,6 @@ module Flagdoc
       puts
     end
 
-    # @since 0.1.0
-    #
     # @return [STDOUT] colored flags
     def flags(flags)
       flags.each do |flag|
