@@ -18,7 +18,7 @@
 
 ---
 
-Flagdoc is an alternative to the rails notes inspired by the Yardoc syntax. Now, you can add customs flags with priority level.
+Flagdoc is an alternative to the rake notes and inspired by the Yardoc syntax. Now, you can add customs flags with priority level !
 
 ## Installation
 

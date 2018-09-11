@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Nicolas LE CHENIC']
   spec.email         = ['pro.nicolaslechenic@gmail.com']
 
-  spec.summary       = 'Displays the flags written in your ruby ​​code'
+  spec.summary       = 'Flagdoc is an alternative to the rake notes and inspired by the Yardoc syntax'
   spec.homepage      = 'https://github.com/nicolaslechenic/flagdoc'
   spec.files         =
     `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(spec)/}) }
