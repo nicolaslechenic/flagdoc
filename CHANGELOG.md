@@ -9,5 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Codeclimate to have automated code review
 - InchCi to display documentation badge
-- CircleCi for the Continuous Integration
+- CircleCi for Continuous Integration
+- Simplecov for test coverage
+- RSpec for tests
+- Ruby version 2.5.1
 - Initialize project with the search for flags, a priority manager, and a beautiful STDOUT :)
