@@ -28,7 +28,7 @@ def foo
   # Do something...
 end
 
-# @flag [NEW] being removed, prefere bar method
+# @flag [NEW] replacing foo method
 def bar
   # Do something...
 end
