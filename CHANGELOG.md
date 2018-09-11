@@ -7,7 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.0] - 2018-09-11
 ### Added
--
 - Codeclimate to have automated code review
 - InchCi to display documentation badge
 - CircleCi for the Continuous Integration
