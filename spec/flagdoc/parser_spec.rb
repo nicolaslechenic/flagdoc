@@ -25,7 +25,7 @@ RSpec.describe Flagdoc::Parser do
       priority: 'NORMAL',
       description: 'Hello world !'
     }.each do |method_name, expected|
-      describe ".#{method_name}" do
+      describe "##{method_name}" do
         it "return #{expected}" do
           expect(
             described_class.new(string: Fixtures.strings[1]).send(method_name)
@@ -43,7 +43,7 @@ RSpec.describe Flagdoc::Parser do
       priority: 'NORMAL',
       description: 'Hello world !'
     }.each do |method_name, expected|
-      describe ".#{method_name}" do
+      describe "##{method_name}" do
         it "return #{expected}" do
           expect(
             described_class.new(string: Fixtures.strings.last).send(method_name)

@@ -3,7 +3,7 @@ require 'flagdoc/stream'
 RSpec.describe Flagdoc::Store do
   let(:instance) { described_class.new }
 
-  describe '.add' do
+  describe '#add' do
     it 'return two files after added' do
       Fixtures.flags.each { |flag| instance.add(flag) }
 
