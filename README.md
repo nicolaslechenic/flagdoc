@@ -15,3 +15,19 @@
     <img src="http://inch-ci.org/github/nicolaslechenic/flagdoc.svg?branch=master" />
   </a>
 </div>
+
+Flagdoc is an alternative to the rails notes inspired by the Yardoc syntax. Now, you can add customs flags with priority level
+
+```ruby
+# @flag [OLD, HIGH] being removed, prefere bar method
+def foo
+  # Do something...
+end
+```
+
+## Levels:
+
+- LOW
+- NORMAL
+- HIGH
+
