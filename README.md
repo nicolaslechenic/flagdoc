@@ -16,14 +16,32 @@
   </a>
 </div>
 
+---
+
 Flagdoc is an alternative to the rails notes inspired by the Yardoc syntax. Now, you can add customs flags with priority level
+
+**./example/file.rb**
 
 ```ruby
 # @flag [OLD, HIGH] being removed, prefere bar method
 def foo
   # Do something...
 end
+
+# @flag [NEW] being removed, prefere bar method
+def bar
+  # Do something...
+end
+
+# @flag [TODO, LOW] must be renamed to baz
+def bazz
+  # Do something...
+end
 ```
+
+Will return something like that:
+
+![Terminal STDOUT](/files/example.png)
 
 ## Levels:
 
