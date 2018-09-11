@@ -16,6 +16,12 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
   spec.executables   = ['flagdoc']
   spec.require_paths = ['lib']
+  spec.metadata = {
+    'bug_tracker_uri'   => "https://github.com/nicolaslechenic/flagdoc/issues",
+    'changelog_uri'     => "https://github.com/nicolaslechenic/flagdoc/CHANGELOG.md",
+    'documentation_uri' => 'https://github.com/nicolaslechenic/flagdoc',
+    'source_code_uri'   => 'https://github.com/nicolaslechenic/flagdoc'
+  }
 
   spec.add_development_dependency 'bundler',    '~> 1.16'
   spec.add_development_dependency 'pry',        '~> 0.11'
