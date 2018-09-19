@@ -6,8 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1] - 2018-09-19
+### Fixed
+- Force grep with file name
+
+### Changed
+- Constantize content
+
 ## [0.2.0] - 2018-09-11
-### Change
+### Changed
 - Remove pry from bin/flagdoc
 - Gemspec summary
 

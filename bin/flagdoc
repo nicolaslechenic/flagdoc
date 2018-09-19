@@ -6,7 +6,7 @@ require_relative '../lib/flagdoc'
 store = Flagdoc::Store.new
 
 Dir['./**/*.rb'].each do |file|
-  strings = `grep -rn '# @flag' #{file}`
+  strings = `grep -rnH '# @flag' #{file}`
 
   next if strings.empty?
   strings.split("\n").each do |string|
